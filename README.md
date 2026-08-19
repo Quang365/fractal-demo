@@ -25,34 +25,36 @@ A high-performance GPU-accelerated implementation of the **Cantor Ternary Set**,
 
 ### 1.1 The Cantor Ternary Set
 
-The classical Cantor set $\mathcal{C} \subset [0, 1]$ is constructed by recursively removing open middle thirds from unit line segments. Formally:
+The classical Cantor set $C \subset [0, 1]$ is constructed by recursively removing open middle thirds from unit line segments. Formally:
 
-1. Let $\mathcal{C}_0 = [0, 1]$.
-2. Given $\mathcal{C}_k$, which consists of $2^k$ disjoint closed intervals of length $3^{-k}$, construct $\mathcal{C}_{k+1}$ by removing the open middle third of each interval:
-   $$\mathcal{C}_{k+1} = \frac{1}{3}\mathcal{C}_k \cup \left( \frac{2}{3} + \frac{1}{3}\mathcal{C}_k \right)$$
+1. Let $C_0 = [0, 1]$.
+2. Given $C_k$, which consists of $2^k$ disjoint closed intervals of length $3^{-k}$, construct $C_{k+1}$ by removing the open middle third of each interval:
+$$C_{k+1} = \frac{1}{3}C_k \cup \left(\frac{2}{3} + \frac{1}{3}C_k\right)$$
 3. The Cantor set is the infinite intersection:
-   $$\mathcal{C} = \bigcap_{k=0}^{\infty} \mathcal{C}_k$$
+$$C = \bigcap_{k=0}^{\infty} C_k$$
 
-#### Ternary Representation
-Any $x \in [0, 1]$ can be written in base-$3$ (ternary):
+**Ternary Representation**
+
+Any $x \in [0, 1]$ can be written in base-3 (ternary):
 $$x = \sum_{k=1}^{\infty} \frac{a_k}{3^k}, \quad a_k \in \{0, 1, 2\}$$
-A point $x \in [0, 1]$ belongs to $\mathcal{C}$ if and only if it admits a ternary expansion containing **no digit 1** (i.e., $a_k \in \{0, 2\}$ for all $k$).
+
+A point $x \in [0, 1]$ belongs to $C$ if and only if it admits a ternary expansion containing **no digit 1** (i.e., $a_k \in \{0, 2\}$ for all $k$).
 
 ---
 
 ### 1.2 The Cantor Distribution & Devil's Staircase
 
 The Cantor Function $c: [0, 1] \to [0, 1]$ (popularly known as the **Devil's Staircase**) is constructed as follows:
+
 For a point $x = \sum_{k=1}^{\infty} \frac{a_k}{3^k}$:
-1. Let $K(x) = \inf \{ k \in \mathbb{N} : a_k = 1 \}$ be the index of the first ternary digit equal to 1 (with $K(x) = \infty$ if no digit is 1).
-2. Define the binary coefficients:
-   $$b_k = \begin{cases} 
-   \frac{a_k}{2} & \text{if } k < K(x) \\
-   1 & \text{if } k = K(x) \\
-   0 & \text{if } k > K(x)
-   \end{cases}$$
+
+1. Let $K(x) = \min \{ k \in \mathbb{N} : a_k = 1 \}$ be the index of the first ternary digit equal to 1 (with $K(x) = \infty$ if no digit is 1).
+2. Define the binary coefficients $b_k$:
+   * $b_k = a_k / 2$ if $k < K(x)$
+   * $b_k = 1$ if $k = K(x)$
+   * $b_k = 0$ if $k > K(x)$
 3. The value of the Cantor function is:
-   $$c(x) = \sum_{k=1}^{\infty} \frac{b_k}{2^k}$$
+$$c(x) = \sum_{k=1}^{\infty} \frac{b_k}{2^k}$$
 
 ---
 
