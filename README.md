@@ -139,11 +139,6 @@ pip install torch torchvision torchaudio --index-url https://download.pytorch.or
 pip install matplotlib numpy
 ```
 
-### Running the Analysis
-```bash
-python cantor_fractal_cuda.py
-```
-
 ---
 
 ## 6. Numerical Results
