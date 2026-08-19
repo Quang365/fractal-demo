@@ -122,10 +122,12 @@ has_seen_one = has_seen_one | is_one
 ## 4. Convergence Analysis
 
 The iterative sequence $c_k(x)$ converges uniformly to $c(x)$ on $[0, 1]$ in the Banach space $(C[0, 1], \|\cdot\|_\infty)$:
-$$\|c_k - c\|_\infty = \sup_{x \in [0, 1]} |c_k(x) - c(x)| \le \sum_{j=k+1}^\infty \frac{1}{2^j} = \frac{1}{2^k}$$
+
+$$\|c_k - c\|_\infty = \sup_{x \in [0, 1]} |c_k(x) - c(x)| \le \sum_{j=k+1}^{\infty} \frac{1}{2^j} = \frac{1}{2^k}$$
 
 The empirical rate is benchmarked across both uniform error ($L_\infty$) and root-mean-squared error ($L_2$):
-$$\|c_k - c_K\|_{L_2} = \left( \frac{1}{N} \sum_{i=1}^N |c_k(x_i) - c_K(x_i)|^2 \right)^{1/2}$$
+
+$$\|c_k - c_K\|_{L_2} = \left( \frac{1}{N} \sum_{i=1}^{N} |c_k(x_i) - c_K(x_i)|^2 \right)^{1/2}$$
 
 ---
 
@@ -145,12 +147,12 @@ pip install matplotlib numpy
 
 ## 6. Numerical Results
 
-| Metric | Theoretical Value | GPU Measured (N = $10^6$) | Relative Error |
+| Metric | Theoretical Value | GPU Measured ($N = 10^6$) | Relative Error |
 | :--- | :--- | :--- | :--- |
-| **Box Dimension ($D$)** | `0.63092975` | `0.63092975` | $< 10^{-7}$ |
-| **$L_\infty$ Error ($k=10$)** | $\le 2^{-10} \approx 9.765 \times 10^{-4}$ | `9.765625e-04` | Exact Upper Bound |
-| **$L_2$ RMS Error ($k=10$)** | — | `3.452180e-04` | — |
-| **Execution Time ($10^6$ pts, 15 iters)**| — | `~12.4 ms` (CUDA) | — |
+| **Box Dimension ($D$)** | `0.63092975` | `0.58015420` | `8.05e-02` |
+| **$L_\infty$ Error ($k = 10$)** | $\le 2^{-10} \approx 9.765 \times 10^{-4}$ | `9.460449e-04` | Exact Upper Bound |
+| **$L_2$ RMS Error ($k = 10$)** | — | `7.027785e-05` | — |
+| **Execution Time ($10^6$ pts, 15 iters)** | — | `~13.55 ms` (CUDA) | — |
 
 ---
 
